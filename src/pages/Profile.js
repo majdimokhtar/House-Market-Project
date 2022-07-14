@@ -24,10 +24,10 @@ export default function Profile() {
 
    useEffect(() => {
     const fetchUserListings =async()=>{
-      const listingsRef = collection(db,"listings")
-      const q = query(listingsRef,where("userRef","==",auth.currentUser.uid),orderBy("timestamp","desc"))
+      const listingsRef = collection(db, "listings")
+      const q = query(listingsRef,where("userRef", "==", auth.currentUser.uid),orderBy("timestamp","desc"))
       const querySnap =await getDocs(q)
-      const listings =[]
+      let listings =[]
       querySnap.forEach((doc)=>{
         return listings.push({
           id:doc.id,
